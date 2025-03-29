@@ -2,35 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Click to Reveal</title>
+  <title>Image Cycler</title>
   <style>
     body {
       background-color: #111;
-      color: white;
-      text-align: center;
-      margin-top: 50px;
-      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-
     img {
-      width: 300px;
-      border-radius: 10px;
+      max-width: 90vw;
+      max-height: 90vh;
       cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    img:hover {
-      transform: scale(1.05);
+      border: 5px solid #00f;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00f;
+      transition: all 0.3s ease;
     }
   </style>
 </head>
 <body>
+  <img id="mainImage" src="img1.jpg" alt="Image" onclick="nextImage()">
 
-  <h1>Click the image to reveal the secret one 👀</h1>
-  
-  <a href="nic.jpg" target="_blank">
-    <img src="cat.png" alt="Click Me">
-  </a>
+  <script>
+    const images = ["cat.png", "nic.png", "dan.png"];
+    let current = 0;
 
+    function nextImage() {
+      current = (current + 1) % images.length;
+      document.getElementById("mainImage").src = images[current];
+    }
+  </script>
 </body>
 </html>
